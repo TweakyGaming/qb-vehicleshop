@@ -310,7 +310,7 @@ RegisterNetEvent('qb-vehicleshop:server:sellShowroomVehicle', function(data, pla
             })
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('cash', vehiclePrice, 'vehicle-bought-in-showroom')
-            TriggerEvent('qb-bossmenu:server:addAccountMoney', player.PlayerData.job.name, vehiclePrice)
+            TriggerEvent('qb-management:server:addAccountMoney', player.PlayerData.job.name, vehiclePrice)
             TriggerClientEvent('QBCore:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
         elseif bank >= vehiclePrice then
             MySQL.Async.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state) VALUES (?, ?, ?, ?, ?, ?, ?)', {
@@ -324,7 +324,7 @@ RegisterNetEvent('qb-vehicleshop:server:sellShowroomVehicle', function(data, pla
             })
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('bank', vehiclePrice, 'vehicle-bought-in-showroom')
-            TriggerEvent('qb-bossmenu:server:addAccountMoney', player.PlayerData.job.name, vehiclePrice)
+            TriggerEvent('qb-management:server:addAccountMoney', player.PlayerData.job.name, vehiclePrice)
             TriggerClientEvent('QBCore:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
         else
             TriggerClientEvent('QBCore:Notify', src, 'Not enough money', 'error')
@@ -375,7 +375,7 @@ RegisterNetEvent('qb-vehicleshop:server:sellfinanceVehicle', function(downPaymen
             })
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('cash', downPayment, 'vehicle-bought-in-showroom')
-            TriggerEvent('qb-bossmenu:server:addAccountMoney', player.PlayerData.job.name, vehiclePrice)
+            TriggerEvent('qb-management:server:addAccountMoney', player.PlayerData.job.name, vehiclePrice)
             TriggerClientEvent('QBCore:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
         elseif bank >= downPayment then
             MySQL.Async.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state, balance, paymentamount, paymentsleft, financetime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', {
@@ -393,7 +393,7 @@ RegisterNetEvent('qb-vehicleshop:server:sellfinanceVehicle', function(downPaymen
             })
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('bank', downPayment, 'vehicle-bought-in-showroom')
-            TriggerEvent('qb-bossmenu:server:addAccountMoney', player.PlayerData.job.name, vehiclePrice)
+            TriggerEvent('qb-management:server:addAccountMoney', player.PlayerData.job.name, vehiclePrice)
             TriggerClientEvent('QBCore:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
         else
             TriggerClientEvent('QBCore:Notify', src, 'Not enough money', 'error')
@@ -401,6 +401,11 @@ RegisterNetEvent('qb-vehicleshop:server:sellfinanceVehicle', function(downPaymen
     else
         TriggerClientEvent('QBCore:Notify', src, 'This player is not close enough', 'error')
     end
+end)
+
+RegisterNetEvent('vehiclekeys:server:CheckHasKey', function(plate)
+    local Player = QBCore.Functions.GetPlayer(source)
+    return CheckOwner(plate, Player.PlayerData.citizenid)
 end)
 
 -- Check if payment is due

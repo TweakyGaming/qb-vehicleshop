@@ -44,8 +44,8 @@ end)
 
 local vehHeaderMenu = {
     {
-        header = 'Vehicle Options',
-        txt = 'Interact with the current vehicle',
+        header = 'Fahrzeug-Optionen',
+        txt = 'Interaktion mit dem aktuellen Fahrzeug',
         params = {
             event = 'qb-vehicleshop:client:showVehOptions'
         }
@@ -55,7 +55,7 @@ local vehHeaderMenu = {
 local financeMenu = {
     {
         header = 'Financed Vehicles',
-        txt = 'Browse your owned vehicles',
+        txt = 'Finanzierte Fahrzeuge',
         params = {
             event = 'qb-vehicleshop:client:getVehicles'
         }
@@ -64,7 +64,7 @@ local financeMenu = {
 
 local returnTestDrive = {
     {
-        header = 'Finish Test Drive',
+        header = 'Testfahrt beenden',
         params = {
             event = 'qb-vehicleshop:client:TestDriveReturn'
         }
@@ -154,7 +154,7 @@ local function startTestDriveTimer(testDriveTime)
             Wait(1)
             if GetGameTimer() < gameTimer+tonumber(1000*testDriveTime) then
                 local secondsLeft = GetGameTimer() - gameTimer
-                drawTxt('Test Drive Time Remaining: '..math.ceil(testDriveTime - secondsLeft/1000),4,0.5,0.93,0.50,255,255,255,180)
+                drawTxt('Verbleibende Zeit der Testfahrt: '..math.ceil(testDriveTime - secondsLeft/1000),4,0.5,0.93,0.50,255,255,255,180)
             end
         end
     end)
@@ -201,7 +201,7 @@ local function createVehZones(shopName) -- This will create an entity zone if co
                     type = "client",
                     event = "qb-vehicleshop:client:showVehOptions",
                     icon = "fas fa-car",
-                    label = "Vehicle Interaction",
+                    label = "Fahrzeug-Interaktion",
                     canInteract = function(entity)
                         local closestShop = getShopInsideOf()
                         if (closestShop ~= nil) and (Config.Shops[closestShop]['Job'] == 'none' or PlayerData.job.name == Config.Shops[closestShop]['Job']) then
@@ -237,15 +237,15 @@ function createFreeUseShop(shopShape, name)
                             header = getVehBrand():upper().. ' '..getVehName():upper().. ' - $' ..getVehPrice(),
                         },
                         {
-                            header = 'Test Drive',
-                            txt = 'Test drive currently selected vehicle',
+                            header = 'Test Fahrt',
+                            txt = 'Mache eine Test Fahrt mit den ausgewählten Fahrzeug',
                             params = {
                                 event = 'qb-vehicleshop:client:TestDrive',
                             }
                         },
                         {
-                            header = "Buy Vehicle",
-                            txt = 'Purchase currently selected vehicle',
+                            header = "Fahrzeug Kaufen",
+                            txt = 'Kaufe das gewählte Fahrzeug',
                             params = {
                                 isServer = true,
                                 event = 'qb-vehicleshop:server:buyShowroomVehicle',
@@ -255,8 +255,8 @@ function createFreeUseShop(shopShape, name)
                             }
                         },
                         {
-                            header = 'Finance Vehicle',
-                            txt = 'Finance currently selected vehicle',
+                            header = 'Fahrzeug Finanzieren',
+                            txt = 'Finanziere das gewählte Fahrzeug',
                             params = {
                                 event = 'qb-vehicleshop:client:openFinance',
                                 args = {
@@ -266,8 +266,8 @@ function createFreeUseShop(shopShape, name)
                             }
                         },
                         {
-                            header = 'Swap Vehicle',
-                            txt = 'Change currently selected vehicle',
+                            header = 'Fahrzeug wechsel',
+                            txt = 'Wähle ein anderes Fahrzeug',
                             params = {
                                 event = 'qb-vehicleshop:client:vehCategories',
                             }
@@ -303,8 +303,8 @@ function createManagedShop(shopShape, name, jobName)
                             header = getVehBrand():upper().. ' '..getVehName():upper().. ' - $' ..getVehPrice(),
                         },
                         {
-                            header = 'Test Drive',
-                            txt = 'Allow player for test drive',
+                            header = 'Test Fahrt',
+                            txt = 'Lass den Intressenten eine Test Fahrt machen',
                             params = {
                                 event = 'qb-vehicleshop:client:openIdMenu',
                                 args = {
@@ -314,8 +314,8 @@ function createManagedShop(shopShape, name, jobName)
                             }
                         },
                         {
-                            header = "Sell Vehicle",
-                            txt = 'Sell vehicle to Player',
+                            header = "Fahrzeug verkaufen",
+                            txt = 'Varkaufe Fahrzeug an Intressent',
                             params = {
                                 event = 'qb-vehicleshop:client:openIdMenu',
                                 args = {
@@ -325,8 +325,8 @@ function createManagedShop(shopShape, name, jobName)
                             }
                         },
                         {
-                            header = 'Finance Vehicle',
-                            txt = 'Finance vehicle to Player',
+                            header = 'Fahrzeug Finanzieren',
+                            txt = 'Finanziere das gewählte Fahrzeug an Intressenten',
                             params = {
                                 event = 'qb-vehicleshop:client:openCustomFinance',
                                 args = {
@@ -336,8 +336,8 @@ function createManagedShop(shopShape, name, jobName)
                             }
                         },
                         {
-                            header = 'Swap Vehicle',
-                            txt = 'Change currently selected vehicle',
+                            header = 'Fahrzeug wechsel',
+                            txt = 'Wähle ein anderes Fahrzeug',
                             params = {
                                 event = 'qb-vehicleshop:client:vehCategories',
                             }
@@ -383,7 +383,7 @@ RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
             SetEntityAsMissionEntity(veh, true, true)
             SetEntityHeading(veh, Config.Shops[closestShop]["VehicleSpawn"].w)
             TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh))
-            TriggerServerEvent('qb-vehicletuning:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
+            TriggerServerEvent('qb-mechanicjob:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
             testDriveVeh = veh
             QBCore.Functions.Notify('You have '..Config.Shops[closestShop]["TestDriveTimeLimit"]..' minutes remaining')
             SetTimeout(Config.Shops[closestShop]["TestDriveTimeLimit"] * 60000, function()
@@ -399,7 +399,7 @@ RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
         createTestDriveReturn()
         startTestDriveTimer(Config.Shops[getShopInsideOf()]["TestDriveTimeLimit"] * 60)
     else
-        QBCore.Functions.Notify('Already in test drive', 'error')
+        QBCore.Functions.Notify('Bereits auf Test Fahrt', 'error')
     end
 end)
 
@@ -416,23 +416,23 @@ RegisterNetEvent('qb-vehicleshop:client:customTestDrive', function(data)
             SetEntityAsMissionEntity(veh, true, true)
             SetEntityHeading(veh, Config.Shops[shopInsideOf]["VehicleSpawn"].w)
             TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh))
-            TriggerServerEvent('qb-vehicletuning:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
+            TriggerServerEvent('qb-mechanicjob:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
             testDriveVeh = veh
-            QBCore.Functions.Notify('You have '..Config.Shops[shopInsideOf]["TestDriveTimeLimit"]..' minutes remaining')
+            QBCore.Functions.Notify('Du hast noch '..Config.Shops[shopInsideOf]["TestDriveTimeLimit"]..' Minuten.')
             SetTimeout(Config.Shops[shopInsideOf]["TestDriveTimeLimit"] * 60000, function()
                 if testDriveVeh ~= 0 then
                     testDriveVeh = 0
                     inTestDrive = false
                     QBCore.Functions.DeleteVehicle(veh)
                     SetEntityCoords(PlayerPedId(), prevCoords)
-                    QBCore.Functions.Notify('Vehicle test drive complete')
+                    QBCore.Functions.Notify('Test Fahrt abgeschlossen')
                 end
             end)
         end, Config.Shops[shopInsideOf]["VehicleSpawn"], false)
         createTestDriveReturn()
         startTestDriveTimer(Config.Shops[shopInsideOf]["TestDriveTimeLimit"] * 60)
     else
-        QBCore.Functions.Notify('Already in test drive', 'error')
+        QBCore.Functions.Notify('Bereits auf Test Fahrt', 'error')
     end
 end)
 
@@ -446,14 +446,14 @@ RegisterNetEvent('qb-vehicleshop:client:TestDriveReturn', function()
         exports['qb-menu']:closeMenu()
         testDriveZone:destroy()
     else
-        QBCore.Functions.Notify('This is not your test drive vehicle', 'error')
+        QBCore.Functions.Notify('Das ist nicht deine Test Fahrt', 'error')
     end
 end)
 
 RegisterNetEvent('qb-vehicleshop:client:vehCategories', function()
     local categoryMenu = {
         {
-            header = '< Go Back',
+            header = '< Zurück',
             params = {
                 event = 'qb-vehicleshop:client:homeMenu'
             }
@@ -511,13 +511,13 @@ RegisterNetEvent('qb-vehicleshop:client:openFinance', function(data)
                 type = 'number',
                 isRequired = true,
                 name = 'downPayment',
-                text = 'Down Payment Amount - Min ' ..Config.MinimumDown..'%'
+                text = 'Höhe der Anzahlung - Min ' ..Config.MinimumDown..'%'
             },
             {
                 type = 'number',
                 isRequired = true,
                 name = 'paymentAmount',
-                text = 'Total Payments - Min '..Config.MaximumPayments
+                text = 'Zahlungen insgesamt - Min '..Config.MaximumPayments
             }
         }
     })
@@ -537,13 +537,13 @@ RegisterNetEvent('qb-vehicleshop:client:openCustomFinance', function(data)
                 type = 'number',
                 isRequired = true,
                 name = 'downPayment',
-                text = 'Down Payment Amount - Min 10%'
+                text = 'Höhe der Anzahlung - Min 10%'
             },
             {
                 type = 'number',
                 isRequired = true,
                 name = 'paymentAmount',
-                text = 'Total Payments - Max '..Config.MaximumPayments
+                text = 'Zahlungen insgesamt - Max '..Config.MaximumPayments
             },
             {
                 text = "Server ID (#)",
@@ -579,7 +579,7 @@ RegisterNetEvent('qb-vehicleshop:client:swapVehicle', function(data)
         SetEntityHeading(veh, Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].coords.w)
         SetVehicleDoorsLocked(veh, 3)
         FreezeEntityPosition(veh, true)
-        SetVehicleNumberPlateText(veh, 'BUY ME')
+        SetVehicleNumberPlateText(veh, ' EpicV ')
         Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].chosenVehicle = data.toVehicle
     end
 end)
@@ -592,7 +592,7 @@ RegisterNetEvent('qb-vehicleshop:client:buyShowroomVehicle', function(vehicle, p
         SetEntityHeading(veh, Config.Shops[getShopInsideOf()]["VehicleSpawn"].w)
         SetEntityAsMissionEntity(veh, true, true)
         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
-        TriggerServerEvent("qb-vehicletuning:server:SaveVehicleProps", QBCore.Functions.GetVehicleProperties(veh))
+        TriggerServerEvent("qb-mechanicjob:server:SaveVehicleProps", QBCore.Functions.GetVehicleProperties(veh))
     end, Config.Shops[getShopInsideOf()]["VehicleSpawn"], true)
 end)
 
@@ -625,28 +625,28 @@ end)
 RegisterNetEvent('qb-vehicleshop:client:getVehicleFinance', function(data)
     local vehFinance = {
         {
-            header = '< Go Back',
+            header = '< Zurück',
             params = {
                 event = 'qb-vehicleshop:client:getVehicles'
             }
         },
         {
             isMenuHeader = true,
-            header = 'Total Balance Remaining',
+            header = 'Verbleibender Gesamtbetrag',
             txt = '$'..comma_value(data.balance)..''
         },
         {
             isMenuHeader = true,
-            header = 'Total Payments Remaining',
+            header = 'Verbleibende Zahlungen insgesamt',
             txt = ''..data.paymentsLeft..''
         },
         {
             isMenuHeader = true,
-            header = 'Recurring Payment Amount',
+            header = 'Wiederkehrender Zahlungsbetrag',
             txt = '$'..comma_value(data.paymentAmount)..''
         },
         {
-            header = 'Make a payment',
+            header = 'Eine Zahlung leisten',
             params = {
                 event = 'qb-vehicleshop:client:financePayment',
                 args = {
@@ -657,7 +657,7 @@ RegisterNetEvent('qb-vehicleshop:client:getVehicleFinance', function(data)
             }
         },
         {
-            header = 'Payoff vehicle',
+            header = 'Abzahlungsfahrzeug',
             params = {
                 isServer = true,
                 event = 'qb-vehicleshop:server:financePaymentFull',
@@ -680,7 +680,7 @@ RegisterNetEvent('qb-vehicleshop:client:financePayment', function(data)
                 type = 'number',
                 isRequired = true,
                 name = 'paymentAmount',
-                text = 'Payment Amount ($)'
+                text = 'Zahlungsbetrag ($)'
             }
         }
     })
@@ -721,7 +721,7 @@ CreateThread(function()
 	    local Dealer = AddBlipForCoord(Config.Shops[k]["Location"])
 	    SetBlipSprite (Dealer, 326)
             SetBlipDisplay(Dealer, 4)
-            SetBlipScale  (Dealer, 0.75)
+            SetBlipScale  (Dealer, 0.5)
 	    SetBlipAsShortRange(Dealer, true)
 	    SetBlipColour(Dealer, 3)
             BeginTextCommandSetBlipName("STRING")
@@ -765,7 +765,7 @@ CreateThread(function()
             SetVehicleDoorsLocked(veh, 3)
             SetEntityHeading(veh, Config.Shops[k]["ShowroomVehicles"][i].coords.w)
             FreezeEntityPosition(veh,true)
-            SetVehicleNumberPlateText(veh, 'BUY ME')
+            SetVehicleNumberPlateText(veh, ' EpicV ')
         end
 			
         createVehZones(k)
