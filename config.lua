@@ -44,27 +44,27 @@ Config.Shops = {
         ['VehicleSpawn'] = vector4(-56.79, -1109.85, 26.43, 71.5), -- Spawn location when vehicle is bought
         ['ShowroomVehicles'] = {
             [1] = {
-                coords = vector4(-54.58, -1097.07, 27.3, 29.08 -0.9),
+                coords = vector4(-54.58, -1097.07, 27.3-1.0, 29.08),
                 defaultVehicle = 'zr350',
                 chosenVehicle = 'zr350',
             },
             [2] = {
-                coords = vector4(-49.97, -1083.78, 27.3, 253.42 -0.9),
+                coords = vector4(-49.97, -1083.78, 27.3-1.0, 253.42),
                 defaultVehicle = 'calico',
                 chosenVehicle = 'calico',
             },
             [3] = {
-                coords = vector4(-47.57, -1091.86, 27.3, 185.6 -0.9),
+                coords = vector4(-47.57, -1091.86, 27.3-1.0, 185.6),
                 defaultVehicle = 'jester4',
                 chosenVehicle = 'jester4',
             },
             [4] = {
-                coords = vector4(-37.17, -1093.17, 27.3, 199.07 -0.9),
+                coords = vector4(-37.17, -1093.17, 27.3-1.0, 199.07),
                 defaultVehicle = 'rt3000',
                 chosenVehicle = 'rt3000',
             },
             [5] = {
-                coords = vector4(-42.59, -1101.44, 27.3, 220.9 -0.9),
+                coords = vector4(-42.59, -1101.44, 27.3-1.0, 220.9),
                 defaultVehicle = 'comet6',
                 chosenVehicle = 'comet6',
             }
@@ -106,32 +106,32 @@ Config.Shops = {
         ['VehicleSpawn'] = vector4(-29.73, -1677.32, 29.49, 133.39),
         ['ShowroomVehicles'] = {
             [1] = {
-                coords = vector4(-44.03, -1689.3, 29.4 -0.950, 347.09), --vector4(-44.03, -1689.3, 28.7, 348.09)
+                coords = vector4(-44.03, -1689.3, 29.4-1.0, 347.09), --vector4(-44.03, -1689.3, 28.7, 348.09)
                 defaultVehicle = 'faction',
                 chosenVehicle = 'faction',
             },
             [2] = {
-                coords = vector4(-48.12, -1690.98, 29.4 -0.950, 349.65), --vector4(-48.12, -1690.98, 28.85, 349.65)
+                coords = vector4(-48.12, -1690.98, 29.4-1.0, 349.65), --vector4(-48.12, -1690.98, 28.85, 349.65)
                 defaultVehicle = 'chino2',
                 chosenVehicle = 'chino2',
             },
             [3] = {
-                coords = vector4(-52.47, -1693.02, 29.4 -0.950, 344.0), --vector4(-52.47, -1693.02, 28.9, 344.0)
+                coords = vector4(-52.47, -1693.02, 29.4-0.9, 344.0), --vector4(-52.47, -1693.02, 28.9, 344.0)
                 defaultVehicle = 'buccaneer',
                 chosenVehicle = 'buccaneer',
             },
             [4] = {
-                coords = vector4(-58.83, -1686.59, 29.4 -0.950, 272.69), --vector4(-58.83, -1686.59, 28.9, 272.69)
+                coords = vector4(-58.83, -1686.59, 29.4-0.9, 272.69), --vector4(-58.83, -1686.59, 28.9, 272.69)
                 defaultVehicle = 'sultan2',
                 chosenVehicle = 'sultan2',
             },
             [5] = {
-                coords = vector4(-55.93, -1682.77, 29.4 -0.950, 272.38), --vector4(-55.93, -1682.77, 28.9, 272.38)
+                coords = vector4(-55.93, -1682.77, 29.4-0.9, 272.38), --vector4(-55.93, -1682.77, 28.9, 272.38)
                 defaultVehicle = 'remus',
                 chosenVehicle = 'remus',
             },
             [6] = {
-                coords = vector4(-52.8, -1678.93, 29.4 -0.950, 275.95), --vector4(-52.8, -1678.93, 28.82, 275.95)
+                coords = vector4(-52.8, -1678.93, 29.4-1.0, 275.95), --vector4(-52.8, -1678.93, 28.82, 275.95)
                 defaultVehicle = 'impaler',
                 chosenVehicle = 'impaler',
             }
@@ -163,37 +163,69 @@ Config.Shops = {
         ['VehicleSpawn'] = vector4(-221.84, 6206.45, 31.49, 135.42),
         ['ShowroomVehicles'] = {
             [1] = {
-                coords = vector4(-207.19, 6202.81, 31.49, 251.33), --vector4(-207.19, 6202.81, 30.89, 251.33)
+                coords = vector4(-207.19, 6202.81, 31.49-1.0, 251.33), --vector4(-207.19, 6202.81, 30.89, 251.33)
                 defaultVehicle = 'slamvan',
                 chosenVehicle = 'slamvan',
             },
             [2] = {
-                coords = vector4(-209.63, 6200.23, 31.25, 251.33), --vector4(-48.12, -1690.98, 28.85, 349.65)
+                coords = vector4(-209.63, 6200.23, 31.25-0.8, 251.33), --vector4(-48.12, -1690.98, 28.85, 349.65)
                 defaultVehicle = 'club',
                 chosenVehicle = 'club',
             },
             [3] = {
-                coords = vector4(-212.23, 6197.69, 31.49, 251.33), --vector4(-52.47, -1693.02, 28.9, 344.0)
+                coords = vector4(-212.23, 6197.69, 31.49-1.0, 251.33), --vector4(-52.47, -1693.02, 28.9, 344.0)
                 defaultVehicle = 'futo',
                 chosenVehicle = 'futo',
             },
             [4] = {
-                coords = vector4(-214.94, 6194.96, 31.49, 251.33), --vector4(-58.83, -1686.59, 28.9, 272.69)
+                coords = vector4(-214.94, 6194.96, 31.49-1.0, 251.33), --vector4(-58.83, -1686.59, 28.9, 272.69)
                 defaultVehicle = 'sentinel3',
                 chosenVehicle = 'sentinel3',
             },
             [5] = {
-                coords = vector4(-217.54, 6192.21, 31.49, 251.33), --vector4(-55.93, -1682.77, 28.9, 272.38)
+                coords = vector4(-217.54, 6192.21, 31.49-1.0, 251.33), --vector4(-55.93, -1682.77, 28.9, 272.38)
                 defaultVehicle = 'dynasty',
                 chosenVehicle = 'dynasty',
             },
             [6] = {
-                coords = vector4(-220.44, 6189.25, 31.49 -0.9, 251.33), --vector4(-52.8, -1678.93, 28.82, 275.95)
+                coords = vector4(-220.44, 6189.25, 31.49-1.0, 251.33), --vector4(-52.8, -1678.93, 28.82, 275.95)
                 defaultVehicle = 'rancherxl',
                 chosenVehicle = 'rancherxl',
             }
         },
-    } -- Add your next table under this comma
+    },
+    ['sanders'] = {
+        ['Type'] = 'free-use',  -- meaning a real player has to sell the car
+        ['Zone'] = {
+            ['Shape'] = {
+                vector2(-209.02163696289, 6204.759765625),
+                vector2(-222.88209533691, 6190.9296875),
+                vector2(-223.28935241699, 6188.8627929688),
+                vector2(-218.83168029785, 6187.09375),
+                vector2(-203.95031738281, 6203.2080078125)
+            },
+            ['minZ'] = 31.485809326172,
+            ['maxZ'] = 31.49555015564
+        },
+        ['Job'] = 'none', -- Name of job or none
+        ['ShopLabel'] = 'Sanders Motorcycles',
+        ['showBlip'] = true,  --- true or false
+        ['Categories'] = {
+            --['super'] = 'Super',
+            --['sports'] = 'Sports'
+        },
+        ['TestDriveTimeLimit'] = 0.5,
+        ['Location'] = vector3(-218.06, 6200.48, 31.49),
+        ['ReturnLocation'] = vector3(-187.94, 6219.05, 31.49),
+        ['VehicleSpawn'] = vector4(-221.84, 6206.45, 31.49, 135.42),
+        ['ShowroomVehicles'] = {
+            [1] = {
+                coords = vector4(253.85, -1157.07, 29.22, 343.72), --vector4(-207.19, 6202.81, 30.89, 251.33)
+                defaultVehicle = 'slamvan',
+                chosenVehicle = 'slamvan',
+            }
+        },
+    } -- Add your next table under this comma -- Add your next table under this comma
 }
 
 
